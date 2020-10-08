@@ -1,26 +1,17 @@
-# keras-vggface [![Build Status](https://travis-ci.org/rcmalli/keras-vggface.svg?branch=master)](https://travis-ci.org/rcmalli/keras-vggface) [![PyPI Status](https://badge.fury.io/py/keras-vggface.svg)](https://badge.fury.io/py/keras-vggface) [![PyPI Status](https://pepy.tech/badge/keras-vggface)](https://pepy.tech/project/keras-vggface)
+# tfkeras-vggface
+#### An modified version of [keras-vggface](https://github.com/rcmalli/keras-vggface) to compatiable with tf-keras in TensorFlow 2.0+
 
-Oxford VGGFace  Implementation using Keras Functional Framework v2+
-
+Oxford VGGFace  Implementation using Keras in TensorFlow v2+
+- Original from https://github.com/rcmalli/keras-vggface
 - Models are converted from original caffe networks.
 - It supports only Tensorflow backend.
 - You can also load only feature extraction layers with VGGFace(include_top=False) initiation.
 - When you use it for the first time , weights are downloaded and stored in ~/.keras/models/vggface folder.
 - If you don't know where to start check the [blog posts](https://github.com/rcmalli/keras-vggface#projects--blog-posts) that are using this library.
 
-~~~bash
-# Most Recent One (Suggested)
-pip install git+https://github.com/rcmalli/keras-vggface.git
-# Release Version
-pip install keras_vggface
-~~~
-
-
 ### Library Versions
 
-- Keras v2.2.4
-- Tensorflow v1.14.0
-- **Warning: Theano backend is not supported/tested for now.**
+- TensorFlow 2.0+
 
 ### Example Usage
 
@@ -28,7 +19,7 @@ pip install keras_vggface
 
 ```python
 
-from keras_vggface.vggface import VGGFace
+from tfkeras_vggface.vggface import VGGFace
 
 # Based on VGG16 architecture -> old paper(2015)
 vggface = VGGFace(model='vgg16') # or VGGFace() as default
@@ -47,9 +38,9 @@ vggface = VGGFace(model='senet50')
 - Convolution Features
 
     ```python
-    from keras.engine import  Model
-    from keras.layers import Input
-    from keras_vggface.vggface import VGGFace
+    from tensorflow.keras.engine import  Model
+    from tensorflow.keras.layers import Input
+    from tfkeras_vggface.vggface import VGGFace
 
     # Convolution Features
     vgg_features = VGGFace(include_top=False, input_shape=(224, 224, 3), pooling='avg') # pooling: None, avg or max
@@ -63,9 +54,9 @@ vggface = VGGFace(model='senet50')
 - Specific Layer Features
 
     ```python
-    from keras.engine import  Model
-    from keras.layers import Input
-    from keras_vggface.vggface import VGGFace
+    from tensorflow.keras.engine import  Model
+    from tensorflow.keras.layers import Input
+    from tfkeras_vggface.vggface import VGGFace
 
     # Layer Features
     layer_name = 'layer_name' # edit this line
@@ -85,9 +76,9 @@ vggface = VGGFace(model='senet50')
 - VGG16
 
     ```python
-    from keras.engine import  Model
-    from keras.layers import Flatten, Dense, Input
-    from keras_vggface.vggface import VGGFace
+    from tensorflow.keras.engine import  Model
+    from tensorflow.keras.layers import Flatten, Dense, Input
+    from tfkeras_vggface.vggface import VGGFace
 
     #custom parameters
     nb_class = 2
@@ -108,9 +99,9 @@ vggface = VGGFace(model='senet50')
 - RESNET50 or SENET50
 
     ```python
-    from keras.engine import  Model
-    from keras.layers import Flatten, Dense, Input
-    from keras_vggface.vggface import VGGFace
+    from tensorflow.keras.engine import  Model
+    from tensorflow.keras.layers import Flatten, Dense, Input
+    from tfkeras_vggface.vggface import VGGFace
 
     #custom parameters
     nb_class = 2
@@ -135,9 +126,9 @@ vggface = VGGFace(model='senet50')
 
     ```python
     import numpy as np
-    from keras.preprocessing import image
-    from keras_vggface.vggface import VGGFace
-    from keras_vggface import utils
+    from tensorflow.keras.preprocessing import image
+    from tensorflow.keras_vggface.vggface import VGGFace
+    from tfkeras_vggface import utils
 
     # tensorflow
     model = VGGFace() # default : VGG16 , you can use model='resnet50' or 'senet50'
